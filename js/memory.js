@@ -36,6 +36,7 @@ function arrayRandom (Ngatos) {
     var divGatito = document.createElement('div');
         divGatito.setAttribute('class','div-gatito');
         divGatito.setAttribute('class','gatito-'+arrayPositiones[i]);
+        divGatito.setAttribute('id','kity'+i);
     var gatito = document.createElement('img');
         gatito.src = 'imagenes/'+gatitos[arrayPositiones[i]];
         divOcultaGatito = document.createElement('div');
@@ -53,11 +54,17 @@ function mostrar(e){
   seleccionado.push(e);
   e.classList.remove('muestra');
   e.classList.add('oculta');
-
-  //e.parentNode.removeChild(e);
+/*PARA no aumentar el click
+  - por clases.
+    if (seleccionado[0].parentNode.getAttribute('id') == seleccionado[1].parentNode.getAttribute('id')) {
+      click--;
+      seleccionado.splice(1, seleccionado.length-1);
+    }
+*/
   if(click==2){
     click=0;
-    if (seleccionado[0].parentNode.getAttribute('class') == seleccionado[1].parentNode.getAttribute('class')){
+    if ( seleccionado[0].parentNode.getAttribute('class') == seleccionado[1].parentNode.getAttribute('class') && 
+      seleccionado[0].parentNode.getAttribute('id') != seleccionado[1].parentNode.getAttribute('id')){
       console.log('hoil');
     } else{
       seleccionado[0].classList.remove('oculta');
@@ -70,6 +77,14 @@ function mostrar(e){
   click++;
   console.log(click)
   console.log(seleccionado);
+  if(arrayMuestra.length == 12){
+    alert('ganaste..!');
+    // for (var i = 0; i < arrayMuestra.length; i++) {
+    //   arrayMuestra[i].classList.add('disable-here');
+    // }
+  }
 }
+
+var arrayMuestra = document.getElementsByClassName('oculta');
 
 arrayRandom();
