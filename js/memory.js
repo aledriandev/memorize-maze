@@ -50,10 +50,22 @@ function arrayRandom (Ngatos) {
 var seleccionado = [];
 var click = 0;
 function mostrar(e){
-  seleccionado.push(e.parentNode);
-  e.parentNode.removeChild(e);
+  seleccionado.push(e);
+  e.classList.remove('muestra');
+  e.classList.add('oculta');
+
+  //e.parentNode.removeChild(e);
   if(click==2){
     click=0;
+    if (seleccionado[0].parentNode.getAttribute('class') == seleccionado[1].parentNode.getAttribute('class')){
+      console.log('hoil');
+    } else{
+      seleccionado[0].classList.remove('oculta');
+      seleccionado[0].classList.add('muestra');
+      seleccionado[1].classList.remove('oculta');
+      seleccionado[1].classList.add('muestra');
+    }
+    seleccionado.splice(0, 2);
   }
   click++;
   console.log(click)
