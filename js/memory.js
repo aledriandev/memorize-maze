@@ -51,23 +51,21 @@ function arrayRandom (Ngatos) {
 var seleccionado = [];
 var click = 0;
 function mostrar(e){
-  if (e.getAttribute('class')=="div-oculta-gatito muestra") {
+  if ( e.getAttribute('class')=="div-oculta-gatito muestra"){
+  seleccionado.push(e);
   e.classList.remove('muestra');
   e.classList.add('oculta');
-    
+  click++
   }
 /*PARA no aumentar el click
-
+  - por clases.
     if (seleccionado[0].parentNode.getAttribute('id') == seleccionado[1].parentNode.getAttribute('id')) {
       click--;
       seleccionado.splice(1, seleccionado.length-1);
     }
 */
-  if(seleccionado.length == 0){
-  seleccionado.push(e);
-}
-  if (seleccionado.length == 1) {
-    seleccionado.push(e);
+  if((click) == 3){
+    click=1;
     if ( seleccionado[0].parentNode.getAttribute('class') == seleccionado[1].parentNode.getAttribute('class') && 
       seleccionado[0].parentNode.getAttribute('id') != seleccionado[1].parentNode.getAttribute('id')){
       console.log('hoil');
@@ -79,8 +77,6 @@ function mostrar(e){
     }
     seleccionado.splice(0, 2);
   }
-
-  click++;
   console.log(click)
   console.log(seleccionado);
   if(arrayMuestra.length == 12){
