@@ -64,10 +64,12 @@ function mostrar(e){
       seleccionado.splice(1, seleccionado.length-1);
     }
 */
-  if((click) == 3){
-    click=1;
-    if ( seleccionado[0].parentNode.getAttribute('class') == seleccionado[1].parentNode.getAttribute('class') && 
-      seleccionado[0].parentNode.getAttribute('id') != seleccionado[1].parentNode.getAttribute('id')){
+
+  setTimeout(voltear,1200);
+  function voltear(){
+  if((click) == 2){
+    click=0;
+    if ( seleccionado[0].parentNode.getAttribute('class') == seleccionado[1].parentNode.getAttribute('class')){
       console.log('hoil');
     } else{
       seleccionado[0].classList.remove('oculta');
@@ -77,14 +79,18 @@ function mostrar(e){
     }
     seleccionado.splice(0, 2);
   }
+  }
   console.log(click)
   console.log(seleccionado);
   if(arrayMuestra.length == 12){
-    alert('ganaste..!');
-    // for (var i = 0; i < arrayMuestra.length; i++) {
-    //   arrayMuestra[i].classList.add('disable-here');
-    // }
+    var divGanaste = document.createElement('div');
+        divGanaste.setAttribute('class','div-ganaste');
+    var gatitoGanaste = document.createElement('img');
+        gatitoGanaste.src = 'imagenes/winner.gif';
+    divGanaste.appendChild(gatitoGanaste);
+    tablero.appendChild(divGanaste);
   }
+
 }
 
 var arrayMuestra = document.getElementsByClassName('oculta');
